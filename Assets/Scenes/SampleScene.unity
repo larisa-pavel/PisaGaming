@@ -2989,6 +2989,7 @@ GameObject:
   - component: {fileID: 1394181383}
   - component: {fileID: 1394181385}
   - component: {fileID: 1394181384}
+  - component: {fileID: 1394181386}
   m_Layer: 5
   m_Name: SlowBar
   m_TagString: Untagged
@@ -3082,6 +3083,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1394181386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394181382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b1f7ff9dc16124f9f19759dc8a3260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1426477724
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,6 +4028,8 @@ GameObject:
   - component: {fileID: 1835073135}
   - component: {fileID: 1835073137}
   - component: {fileID: 1835073136}
+  - component: {fileID: 1835073138}
+  - component: {fileID: 1835073139}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4096,6 +4111,37 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1835073138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835073134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3a070408aa941ab83ae10be1708848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intensity: 0
+  _shader: {fileID: 4800000, guid: ba40dc630e1d9417cb9ea22586ece1e1, type: 3}
+--- !u!114 &1835073139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835073134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870b9a8f0f82f4f56800cc427bcd1025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scanLineJitter: 0
+  _verticalJump: 0
+  _horizontalShake: 0
+  _colorDrift: 0
+  _shader: {fileID: 4800000, guid: da33272284ea24f208f36998880990be, type: 3}
 --- !u!1 &1848359082
 GameObject:
   m_ObjectHideFlags: 0

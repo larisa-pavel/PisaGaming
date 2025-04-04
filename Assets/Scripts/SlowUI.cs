@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Kino;
 
 public class SlowMoUI : MonoBehaviour
 {
@@ -15,5 +16,17 @@ public class SlowMoUI : MonoBehaviour
     void Update()
     {
         slider.value = player.currentSlowMoEnergy;
+
+        if (slider.value <= 0)
+        {
+            slider.gameObject.SetActive(false); // Hide the slider when energy is depleted
+        }
+        else
+        {
+            slider.gameObject.SetActive(true); // Show the slider when energy is available
+        }
+        
+        // The lower the slider value the more glitchy effects
+
     }
 }
