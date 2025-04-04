@@ -7,12 +7,12 @@ public class ObstacleMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.rotation = Quaternion.Euler(-90f, -90f, 0f);
     }
     public float speed;
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(speed * Time.deltaTime * Vector3.down);
+        transform.Translate(-speed * Time.deltaTime * Vector3.down);
     }
 }

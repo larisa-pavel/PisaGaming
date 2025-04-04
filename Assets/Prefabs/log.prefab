@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6479009964747055403}
+  - component: {fileID: 8912350675561279007}
+  - component: {fileID: 4253898719160880642}
   m_Layer: 0
   m_Name: log
   m_TagString: Untagged
@@ -32,6 +34,32 @@ Transform:
   - {fileID: 1308628330277599839}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -89.98, y: -90, z: 0}
+--- !u!114 &8912350675561279007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279989159340171838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23ce6364c762ce48bfe46acc6b04288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnZ: -10
+--- !u!114 &4253898719160880642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279989159340171838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e6dc29b8a060749887422d255881d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &6793087783838924605
 GameObject:
   m_ObjectHideFlags: 0
