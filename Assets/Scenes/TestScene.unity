@@ -194,6 +194,10 @@ MonoBehaviour:
   cameraHolder: {fileID: 405144720}
   mouseSensitivity: 2
   maxLookAngle: 80
+  maxSlowMoEnergy: 5
+  slowMoDrainRate: 1
+  slowMoRegenRate: 0.5
+  currentSlowMoEnergy: 0
 --- !u!143 &186261964
 CharacterController:
   m_ObjectHideFlags: 0
@@ -489,7 +493,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

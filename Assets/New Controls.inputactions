@@ -2,7 +2,7 @@
     "name": "New Controls",
     "maps": [
         {
-            "name": "Move",
+            "name": "Player",
             "id": "e5ab81e2-4f2c-4cc9-93be-c371cf49325f",
             "actions": [
                 {
@@ -38,7 +38,7 @@
                     "name": "",
                     "id": "dbdcfcb1-6d14-49a6-8ff3-58335e6685df",
                     "path": "<Keyboard>/w",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
