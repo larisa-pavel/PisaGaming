@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstaclePrefab;
-    public float spawnInterval = 3f;
+    public float spawnInterval = 1f;
     public Transform[] spawnPoints;
     public float objectSpeed = 1f;
 
@@ -56,7 +56,7 @@ public class ObstacleSpawner : MonoBehaviour
     void SpawnStartingObstacles(int interval)
     {
         // Spawn a few obstacles at the start
-        for (int i = 0; i < interval / 5; i++)
+        for (int i = 0; i < interval / 10; i++)
         {
             Debug.Log("Spawning obstacle at interval: " + i);
             int randomPoint = Random.Range(0, spawnPoints.Length);
