@@ -1,0 +1,74 @@
+{
+    "name": "New Controls",
+    "maps": [
+        {
+            "name": "Move",
+            "id": "e5ab81e2-4f2c-4cc9-93be-c371cf49325f",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "1cc83432-f77a-4963-98c9-50ced88fd8ff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "Button",
+                    "id": "c1861520-836d-40c8-97dd-ecb7107279e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "2cfeb83a-f8d0-497f-90dd-00d89d96d59a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dbdcfcb1-6d14-49a6-8ff3-58335e6685df",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "835ad06d-83cd-4827-bec7-6965f5fbc952",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a30f3924-6302-4db4-80a1-e47c726c9c31",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
