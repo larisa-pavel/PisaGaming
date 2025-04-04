@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 260736557843168333}
   - component: {fileID: 757915812312492321}
   - component: {fileID: 1977885656947116785}
-  - component: {fileID: 4306681450404708622}
   - component: {fileID: 1276903401714959332}
   m_Layer: 0
   m_Name: Cylinder
@@ -32,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 88.4, y: 159.95078, z: 122.727806}
-  m_LocalScale: {x: 10.642243, y: -17.457455, z: 10.642243}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -123,21 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!114 &4306681450404708622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5540217298176481779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662c24cc904031e49ad20f4cf07085b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 0}
-  spawnInterval: 2
-  spawnPoint: {fileID: 0}
 --- !u!114 &1276903401714959332
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,10 +9,10 @@ public class ObstacleMove : MonoBehaviour
     {
         
     }
-    public float speed = 1000000f;
+    public float speed;
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * speed * Time.deltaTime);
+        transform.Translate(speed * Time.deltaTime * Vector3.down);
     }
 }

@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public float slowMoDrainRate = 1f;       // energy per second while active
     public float slowMoRegenRate = 0.5f;     // energy per second while not active
 
-    //[HideInInspector]
+    [HideInInspector]
     public float currentSlowMoEnergy;
 
     void Start()
