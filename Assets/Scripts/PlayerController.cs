@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         moveDir = transform.TransformDirection(moveDir); // local rotation
 
         // Gravity and jumping
-        if (controller.isGrounded)
+        if (IsGrounded())
         {
             if (ySpeed < 0)
                 ySpeed = -2f;
@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
     void HandleSlowMotion()
     {
         bool wantsToSlowTime = Input.GetMouseButton(1);
+        bool wantsToFastForward = Input.GetMouseButton(0);
         bool hasEnoughEnergy = currentSlowMoEnergy >= 0.2f;
 
         if (wantsToSlowTime && hasEnoughEnergy)
@@ -129,6 +130,14 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 0.3f;
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
 
+            currentSlowMoEnergy -= slowMoDrainRate * Time.unscaledDeltaTime;
+            currentSlowMoEnergy = Mathf.Clamp(currentSlowMoEnergy, 0f, maxSlowMoEnergy);
+        }
+        else if (wantsToFastForward && hasEnoughEnergy)
+        {
+            isSlowMotionActive = false;
+            Time.timeScale = 1.5f;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
             currentSlowMoEnergy -= slowMoDrainRate * Time.unscaledDeltaTime;
             currentSlowMoEnergy = Mathf.Clamp(currentSlowMoEnergy, 0f, maxSlowMoEnergy);
         }
@@ -141,6 +150,7 @@ public class PlayerController : MonoBehaviour
             currentSlowMoEnergy += slowMoRegenRate * Time.unscaledDeltaTime;
             currentSlowMoEnergy = Mathf.Clamp(currentSlowMoEnergy, 0f, maxSlowMoEnergy);
         }
+        
 
         float targetFOV = isSlowMotionActive ? 75f : 90f;
         Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, targetFOV, Time.unscaledDeltaTime * 5f);

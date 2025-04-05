@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public GameObject obstaclePrefab;
+    public GameObject[] obstaclePrefabs;
     public float spawnInterval = 1f;
     public Transform[] spawnPoints;
     public float objectSpeed = 1f;
@@ -22,22 +22,31 @@ public class ObstacleSpawner : MonoBehaviour
 
     void SpawnObstacle(int count)
     {
-        // Instantiate the specified number of obstacles at random spawn points
-        if (obstaclePrefab != null && spawnPoints.Length > 0)
+        if (obstaclePrefabs.Length > 0 && spawnPoints.Length > 0)
         {
             for (int i = 0; i < count; i++)
             {
                 int randomIndex = Random.Range(0, spawnPoints.Length);
                 Transform selectedSpawnPoint = spawnPoints[randomIndex];
-                GameObject createdObject = Instantiate(obstaclePrefab, selectedSpawnPoint.position, Quaternion.Euler(0f, 0f, 0f));
-                createdObject.transform.GetChild(0).gameObject.GetComponent<MoverScript>().start = selectedSpawnPoint.position;
-                createdObject.transform.GetChild(0).gameObject.GetComponent<MoverScript>().end = new Vector3(selectedSpawnPoint.position.x, selectedSpawnPoint.position.y, 10);
 
+                int prefabIndex = Random.Range(0, obstaclePrefabs.Length);
+                GameObject selectedPrefab = obstaclePrefabs[prefabIndex];
+
+                GameObject createdObject = Instantiate(selectedPrefab, selectedSpawnPoint.position, Quaternion.Euler(0f, 0f, 0f));
+                MoverScript mover;
+                if (createdObject.transform.GetChild(0) != null)
+                    mover = createdObject.transform.GetChild(0).GetComponent<MoverScript>();
+                else 
+                    mover = createdObject.GetComponent<MoverScript>();
+
+                mover.start = selectedSpawnPoint.position;
+                mover.end = new Vector3(selectedSpawnPoint.position.x, selectedSpawnPoint.position.y, 10f);
+                mover.speed = objectSpeed;
             }
         }
         else
         {
-            Debug.LogError("ObstaclePrefab or SpawnPoints are not assigned.");
+            Debug.LogError("ObstaclePrefabs or SpawnPoints are not assigned.");
         }
     }
 }
