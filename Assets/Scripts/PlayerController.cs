@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
         // Gravity and jumping
         if (controller.isGrounded)
         {
-            Debug.Log("is grounded");
             if (ySpeed < 0)
                 ySpeed = -2f;
 

@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3946646191164542438}
   - component: {fileID: 260736557843168333}
   - component: {fileID: 757915812312492321}
-  - component: {fileID: 1977885656947116785}
   - component: {fileID: 1276903401714959332}
+  - component: {fileID: 1735764421459909102}
+  - component: {fileID: 4731042927387209386}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -109,19 +110,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &1977885656947116785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5540217298176481779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e6dc29b8a060749887422d255881d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!114 &1276903401714959332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,4 +122,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23ce6364c762ce48bfe46acc6b04288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnZ: -10
+  startPlatformX: 90
+--- !u!143 &1735764421459909102
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5540217298176481779}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 0.1
+  m_Radius: 0.1
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4731042927387209386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5540217298176481779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984e9ff0375777b47ba46939e793c342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 0}
+  pointB: {fileID: 0}
+  speed: 3
+  speedVector: {x: 0, y: 0, z: 0}

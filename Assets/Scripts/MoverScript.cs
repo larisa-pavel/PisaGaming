@@ -3,31 +3,31 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class MoverScript : MonoBehaviour
 {
-    public Transform pointA;
-    public Transform pointB;
+    public Vector3 start;
+    public Vector3 end;
     public float speed = 3f;
 
     private CharacterController controller;
-    private Vector3 target;
 
     public Vector3 speedVector;
 
     void Awake()
     {
         controller = GetComponent<CharacterController>();
-        target = pointB.position;
     }
 
     void Update()
     {
-        Vector3 direction = (target - transform.position).normalized;
+        Vector3 direction = (end - transform.position).normalized;
         speedVector = direction * speed;
-        controller.Move(direction * speed * Time.deltaTime);
+        controller.Move(speed * Time.deltaTime * direction);
 
         // Switch direction when close to the target
-        if (Vector3.Distance(transform.position, target) < 0.1f)
+        if (Vector3.Distance(transform.position, end) < 6f)
         {
-            target = (target == pointA.position) ? pointB.position : pointA.position;
+            end = end + Vector3.down * 20f;
         }
+        if (transform.position.y < -20f)
+            Destroy(transform.parent.gameObject);
     }
 }
