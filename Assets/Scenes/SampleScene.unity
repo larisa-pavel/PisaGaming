@@ -3032,6 +3032,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2107153401}
+  AnalogGlitchEffect: {fileID: 1835073139}
+  DigitalGlitchEffect: {fileID: 1835073138}
 --- !u!114 &1394181385
 MonoBehaviour:
   m_ObjectHideFlags: 0
