@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Kino;
+using System.Diagnostics;
 
 public class SlowMoUI : MonoBehaviour
 {
     public PlayerController player;
     private Slider slider;
+    public AnalogGlitch AnalogGlitchEffect;
+    public DigitalGlitch DigitalGlitchEffect;
 
     void Start()
     {
@@ -15,17 +18,46 @@ public class SlowMoUI : MonoBehaviour
 
     void Update()
     {
+
         slider.value = player.currentSlowMoEnergy;
 
-        if (slider.value <= 0)
+        if (slider.value < 4f)
         {
-            slider.gameObject.SetActive(false); // Hide the slider when energy is depleted
+            float decrease = (5 - slider.value)/ 20 ;
+            AnalogGlitchEffect.scanLineJitter = decrease; // The lower the slider value the more glitchy effects
+
+            AnalogGlitchEffect.horizontalShake = decrease; // The lower the slider value the more glitchy effects
+            AnalogGlitchEffect.colorDrift = decrease; // The lower the slider value the more glitchy effects
+            UnityEngine.Debug.Log("AnalogGlitch scanLineJitter: " + AnalogGlitchEffect.scanLineJitter);
+
+            if (slider.value <= 3f)
+            {
+                AnalogGlitchEffect.verticalJump = 0.1f; // The lower the slider value the more glitchy effects
+            }
+            else
+            {
+                AnalogGlitchEffect.verticalJump = 0f;
+            }
+
+            if (slider.value <= 0.5f)
+            {
+                DigitalGlitchEffect.intensity = 0.2f; // The lower the slider value the more glitchy effects
+            }
+            else
+            {
+                DigitalGlitchEffect.intensity = 0f;
+            }
         }
         else
         {
-            slider.gameObject.SetActive(true); // Show the slider when energy is available
+            AnalogGlitchEffect.scanLineJitter = 0f;
+            AnalogGlitchEffect.horizontalShake = 0f;
+            AnalogGlitchEffect.colorDrift = 0f;
         }
+
         
+
+
         // The lower the slider value the more glitchy effects
 
     }
