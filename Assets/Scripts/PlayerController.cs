@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float currentSlowMoEnergy;
     private bool isOnMovingPlatform;
-    private bool spedup = false;
     private Vector3 platformVelocity;
     private float ySpeed = 0f;
     void Start()

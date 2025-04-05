@@ -6,7 +6,7 @@ public class GameOver : MonoBehaviour
 {
    public GameObject GameOverScreen;
 
-   void onTriggerExit(Collider other)
+   void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
