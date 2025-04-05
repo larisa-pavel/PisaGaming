@@ -25,7 +25,9 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public float currentSlowMoEnergy;
-
+    private bool isOnMovingPlatform;
+    private Vector3 platformVelocity;
+    private float ySpeed = 0f;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -37,7 +39,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleSlowMotion();
-        Move();
+        //Move();
+        Move1();
         Look();
     }
 
@@ -52,7 +55,7 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(moveSpeed * Time.unscaledDeltaTime * move);
+        controller.Move(moveSpeed * Time.deltaTime * move);
 
         if (controller.isGrounded && velocity.y < 0)
         {
@@ -64,10 +67,46 @@ public class PlayerController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        velocity.y += gravity * Time.unscaledDeltaTime;
-        controller.Move(velocity * Time.unscaledDeltaTime);
-    }
+        velocity.y += gravity * Time.deltaTime;
+       
 
+
+        // Apply platform movement if on a moving platform
+        if (isOnMovingPlatform)
+        {
+            velocity += platformVelocity;
+        }
+
+        // Apply movement
+        controller.Move(velocity * Time.deltaTime);
+    }
+    void Move1()
+    {
+        Vector3 moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        moveDir = transform.TransformDirection(moveDir); // local rotation
+
+        // Gravity and jumping
+        if (controller.isGrounded)
+        {
+            Debug.Log("is grounded");
+            if (ySpeed < 0)
+                ySpeed = -2f;
+
+            if (Input.GetButtonDown("Jump"))
+                ySpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        else
+        {
+            ySpeed += gravity * Time.unscaledDeltaTime;
+        }
+
+        Vector3 finalMove = moveDir * moveSpeed + Vector3.up * ySpeed;
+
+        if (isOnMovingPlatform)
+            finalMove += platformVelocity;
+
+        controller.Move(finalMove * Time.unscaledDeltaTime); 
+    }
     void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -106,5 +145,24 @@ public class PlayerController : MonoBehaviour
 
         float targetFOV = isSlowMotionActive ? 75f : 90f;
         Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, targetFOV, Time.unscaledDeltaTime * 5f);
+    }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // Check if the player is standing on a moving platform
+        MoverScript platform = hit.collider.GetComponent<MoverScript>();
+        if (platform != null && hit.normal.y > 0.9f)
+        {
+            // Player has landed on a moving platform
+            isOnMovingPlatform = true;
+            // Calculate the platform's velocity
+            platformVelocity = platform.speedVector;
+            Debug.Log("is on platform");
+        }
+        else
+        {
+            // Player is no longer on a moving platform
+            isOnMovingPlatform = false;
+            platformVelocity = Vector3.zero;
+        }
     }
 }

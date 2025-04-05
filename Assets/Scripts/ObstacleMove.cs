@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class ObstacleMove : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float speed;
+    private Rigidbody rb;
     void Start()
     {
-        transform.rotation = Quaternion.Euler(-90f, -90f, 0f);
+        rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody component is missing from the obstacle.");
+        }
+        //transform.rotation = Quaternion.Euler(-90f, -90f, 0f);
     }
-    public float speed;
-    // Update is called once per frame
-    void Update()
+
+    // FixedUpdate is called at a fixed interval
+    void FixedUpdate()
     {
-        transform.Translate(-speed * Time.deltaTime * Vector3.down);
+        if (rb != null)
+        {
+            rb.MovePosition(transform.position + Vector3.right * speed * Time.fixedDeltaTime);
+        }
     }
 }

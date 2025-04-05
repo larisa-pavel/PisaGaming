@@ -17,10 +17,10 @@ public class AutoDespawner : MonoBehaviour
     {
         if (transform.position.x > startPlatformX)
         {
-            ObstacleMove.enabled = false; // Disable the movement script
-            transform.position = new Vector3(transform.position.x, transform.position.y - ObstacleMove.speed * Time.deltaTime, transform.position.z);
+            //ObstacleMove.enabled = false; // Disable the movement script
+            //transform.position = new Vector3(transform.position.x, transform.position.y - ObstacleMove.speed * Time.deltaTime, transform.position.z);
         }
-        if (transform.position.x > startPlatformX + 10)
+        if (transform.position.y < -10)
         {
             Destroy(gameObject);
         }

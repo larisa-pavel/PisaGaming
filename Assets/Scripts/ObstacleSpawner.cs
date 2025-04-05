@@ -60,7 +60,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             Debug.Log("Spawning obstacle at interval: " + i);
             int randomPoint = Random.Range(0, spawnPoints.Length);
-            SpawnObstacle(new Vector3(i * 5, 0, spawnPoints[randomPoint].position.z));
+            SpawnObstacle(new Vector3(i * 7, 0, spawnPoints[randomPoint].position.z));
         }
     }
 
