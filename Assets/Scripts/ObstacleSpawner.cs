@@ -5,7 +5,7 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject[] obstaclePrefabs;
     public float spawnInterval = 1f;
     public Transform[] spawnPoints;
-    public float objectSpeed = 1f;
+    public float objectSpeed = 3f;
 
     // Start is called before the first frame update
     void Start()

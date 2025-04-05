@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float currentSlowMoEnergy;
     private bool isOnMovingPlatform;
+    private bool spedup = false;
     private Vector3 platformVelocity;
     private float ySpeed = 0f;
     void Start()
@@ -39,8 +40,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleSlowMotion();
-        //Move();
-        Move1();
+        Move();
         Look();
     }
 
@@ -49,38 +49,8 @@ public class PlayerController : MonoBehaviour
         return Physics.Raycast(transform.position, Vector3.down, (controller.height / 2f) + 0.1f);
     }
 
+   
     void Move()
-    {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(moveSpeed * Time.deltaTime * move);
-
-        if (controller.isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-       
-
-
-        // Apply platform movement if on a moving platform
-        if (isOnMovingPlatform)
-        {
-            velocity += platformVelocity;
-        }
-
-        // Apply movement
-        controller.Move(velocity * Time.deltaTime);
-    }
-    void Move1()
     {
         Vector3 moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
         moveDir = transform.TransformDirection(moveDir); // local rotation
@@ -165,12 +135,14 @@ public class PlayerController : MonoBehaviour
             isOnMovingPlatform = true;
             // Calculate the platform's velocity
             platformVelocity = platform.speedVector;
+
             Debug.Log("is on platform");
         }
         else
         {
             // Player is no longer on a moving platform
             isOnMovingPlatform = false;
+
             platformVelocity = Vector3.zero;
         }
     }
