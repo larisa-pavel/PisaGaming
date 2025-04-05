@@ -45,4 +45,12 @@ public class PauseMenu : MonoBehaviour
     {
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }
