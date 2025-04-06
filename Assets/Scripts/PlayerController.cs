@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private float verticalLookRotation = 0f;
     private bool isSlowMotionActive = false;
+    private bool isFastForwardActive = false;
 
     [Header("Slow Motion Settings")]
     public float maxSlowMoEnergy = 5f;
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (wantsToFastForward && hasEnoughEnergy)
         {
+            isFastForwardActive = true;
             isSlowMotionActive = false;
             Time.timeScale = 1.5f;
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
@@ -112,6 +114,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            isFastForwardActive = false;
             isSlowMotionActive = false;
             Time.timeScale = 1f;
             Time.fixedDeltaTime = 0.02f;
@@ -121,7 +124,7 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        float targetFOV = isSlowMotionActive ? 75f : 90f;
+        float targetFOV = isSlowMotionActive ? 75f : (isFastForwardActive ? 95f : 85f);
         Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, targetFOV, Time.unscaledDeltaTime * 5f);
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
