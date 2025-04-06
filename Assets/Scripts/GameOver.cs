@@ -13,6 +13,7 @@ public class GameOver : MonoBehaviour
             // Load the Game Over scene
             Debug.Log("Game Over");
             GameOverScreen.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

@@ -21,16 +21,16 @@ public class SlowMoUI : MonoBehaviour
 
         slider.value = player.currentSlowMoEnergy;
 
-        if (slider.value < 4f)
+        if (slider.value < 2f)
         {
-            float decrease = (5 - slider.value)/ 20 ;
+            float decrease = (5 - slider.value)/ 15 ;
             AnalogGlitchEffect.scanLineJitter = decrease; // The lower the slider value the more glitchy effects
 
             AnalogGlitchEffect.horizontalShake = decrease; // The lower the slider value the more glitchy effects
             AnalogGlitchEffect.colorDrift = decrease; // The lower the slider value the more glitchy effects
             UnityEngine.Debug.Log("AnalogGlitch scanLineJitter: " + AnalogGlitchEffect.scanLineJitter);
 
-            if (slider.value <= 3f)
+            if (slider.value <= 1.5f)
             {
                 AnalogGlitchEffect.verticalJump = 0.1f; // The lower the slider value the more glitchy effects
             }

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool isFastForwardActive = false;
 
     [Header("Slow Motion Settings")]
-    public float maxSlowMoEnergy = 5f;
+    public float maxSlowMoEnergy = 3f;
     public float slowMoDrainRate = 1f;       // energy per second while active
     public float slowMoRegenRate = 0.5f;     // energy per second while not active
 

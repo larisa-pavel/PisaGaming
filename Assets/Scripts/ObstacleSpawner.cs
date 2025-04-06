@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
@@ -24,9 +25,17 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (obstaclePrefabs.Length > 0 && spawnPoints.Length > 0)
         {
+            List<int> usedSpawnPoints = new List<int>();
+
             for (int i = 0; i < count; i++)
             {
-                int randomIndex = Random.Range(0, spawnPoints.Length);
+                int randomIndex;
+                do
+                {
+                    randomIndex = Random.Range(0, spawnPoints.Length);
+                } while (usedSpawnPoints.Contains(randomIndex));
+
+                usedSpawnPoints.Add(randomIndex);
                 Transform selectedSpawnPoint = spawnPoints[randomIndex];
 
                 int prefabIndex = Random.Range(0, obstaclePrefabs.Length);
@@ -36,7 +45,7 @@ public class ObstacleSpawner : MonoBehaviour
                 MoverScript mover;
                 if (createdObject.transform.GetChild(0) != null)
                     mover = createdObject.transform.GetChild(0).GetComponent<MoverScript>();
-                else 
+                else
                     mover = createdObject.GetComponent<MoverScript>();
 
                 mover.start = selectedSpawnPoint.position;
