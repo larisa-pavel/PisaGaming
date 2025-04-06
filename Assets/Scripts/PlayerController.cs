@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
@@ -29,12 +30,18 @@ public class PlayerController : MonoBehaviour
     private bool isOnMovingPlatform;
     private Vector3 platformVelocity;
     private float ySpeed = 0f;
+
+    AudioSource jumpSound;
+    
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
 
         currentSlowMoEnergy = maxSlowMoEnergy;
+        jumpSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -62,7 +69,10 @@ public class PlayerController : MonoBehaviour
                 ySpeed = -2f;
 
             if (Input.GetButtonDown("Jump"))
+            {
+                jumpSound.Play();
                 ySpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
         }
         else
         {
