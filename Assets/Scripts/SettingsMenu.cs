@@ -9,13 +9,14 @@ using TMPro;
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    Resolution[] resolutions;
+    public Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
 
-    void start()
+    void Start()
     {
         resolutions = Screen.resolutions;
         UnityEngine.Debug.Log(resolutions.Length);
+        UnityEngine.Debug.Log("am luat rezolutii");
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
