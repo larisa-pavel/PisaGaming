@@ -51,6 +51,12 @@ public class ObstacleSpawner : MonoBehaviour
                 mover.start = selectedSpawnPoint.position;
                 mover.end = new Vector3(selectedSpawnPoint.position.x, selectedSpawnPoint.position.y, 10f);
                 mover.speed = objectSpeed;
+                
+            }
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                if (spawnPoints[i].position.z < 300)
+                    spawnPoints[i].position += Vector3.forward * 5f;
             }
         }
         else
